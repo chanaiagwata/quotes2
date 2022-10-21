@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quotes } from '../quotes';
 
+
 @Component({
   selector: 'app-quote',
   templateUrl: './quote.component.html',
@@ -16,7 +17,14 @@ export class QuoteComponent implements OnInit {
   toggleDetails(index:number){
     this.quotes[index].showDescription = !this.quotes[index].showDescription;
 
+  };
+  quoteDeleted(isComplete:any, index:number){
+    if(isComplete){
+      this.quotes.splice(index,1);
+    }
+
   }
+
  
   constructor() { }
 
