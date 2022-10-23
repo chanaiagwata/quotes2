@@ -2,7 +2,7 @@ export class Quotes {
 
     showDescription: boolean;
 
-    constructor(public id: number, public title:string, public author:string, public dateCreated:Date){
+    constructor(public id: number, public title:string, public author:string, public upvotes:number, public downvotes:number, public dateCreated:Date){
         this.id = id;
         this.title = title;
         this.author =author;

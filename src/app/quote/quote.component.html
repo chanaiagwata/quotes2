@@ -11,6 +11,11 @@
                         ~{{quote.author}}
                       </p>
                       <br>
+                      <button class="btn btn-success" (click)="upvoteClick(i)">UPVOTE</button>{{quote.upvotes}}
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" (click)="downvoteClick(i)">DOWNVOTE</button>{{quote.downvotes}}
+                      <br>
                       <a href="#" class="button" (click) = 'toggleDetails(i)'>Read More</a>
                       <app-quote-detail *ngIf = 'quote.showDescription' [quote] = 'quote' (isComplete) = 'quoteDeleted($event,i)'></app-quote-detail>
                     </div>
