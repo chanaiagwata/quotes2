@@ -23,6 +23,13 @@ export class QuoteComponent implements OnInit {
     new Quotes(1, 'Technology is best when it brings people together','Matt Mullenweg', 35, 12, new Date(2022, 9, 22)),
   ];
 
+  addNewQuote(quote:Quotes){
+    let quoteLength = this.quotes.length;
+    quote.id = quoteLength+1;
+    quote.dateCreated = new Date(quote.dateCreated)
+    this.quotes.push(quote)
+  }
+
   toggleDetails(index:number){
     this.quotes[index].showDescription = !this.quotes[index].showDescription;
 
