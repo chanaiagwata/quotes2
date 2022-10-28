@@ -1,27 +1,49 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-12 text-center">
+      <div class="popularQuote" >
+        <h4>Popular Quotes</h4>
+        <div class="popular">
+          <div class="card popCard" *ngFor="let popular of populars;let i=index" appHighlight>
+            <div class="card-header">
+                <h4 ><i class="fas  fa-quote-left    "></i> <br> {{popular.quote}}</h4>
+            </div>
+            <div class="card-body">
+                <h6 class="card-title"><small class="text">Author ~ </small>{{popular.author}}</h6>
+                <p class="card-text">{{popular.upvotes}} Upvotes</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
     <div class="col-md-4">
       <app-quote-form (addQuote)="addNewQuote($event)"></app-quote-form>
     </div>
     <div class="col-md-8 text-center">
-      <div *ngFor='let quote of quotes; let i = index'>
-        <div class="card text-center">
-          <div class="card-body">
-            <p class="card-text" id={{i}}>
-              {{quote.quote}}.
+      <div class = "quoteItems">
+        <div *ngFor='let quote of quotes; let i = index'>
+          <div class="card mainQuote text-center">
+            <div class="card-body">
+              <p class="card-text" id={{i}}>
+                {{quote.quote}}.
+                <br>
+                <br>
+                ~{{quote.author}}
+              </p>
+              <br>
+              <button class="btn btn-success" (click)="upvoteClick(i)">UPVOTE</button>{{quote.upvotes}}
               <br>
               <br>
-              ~{{quote.author}}
-            </p>
-            <br>
-            <button class="btn btn-success" (click)="upvoteClick(i)">UPVOTE</button>{{quote.upvotes}}
-            <br>
-            <br>
-            <button class="btn btn-primary" (click)="downvoteClick(i)">DOWNVOTE</button>{{quote.downvotes}}
-            <br>
-            <a href="#" class="button" (click)='toggleDetails(i)'>Read More</a>
-            <app-quote-detail *ngIf='quote.showDescription' [quote]='quote' (isComplete)='quoteDeleted($event,i)'>
-            </app-quote-detail>
+              <button class="btn btn-primary" (click)="downvoteClick(i)">DOWNVOTE</button>{{quote.downvotes}}
+              <br>
+              <a href="#" class="button" (click)='toggleDetails(i)'>Read More</a>
+              <app-quote-detail *ngIf='quote.showDescription' [quote]='quote' (isDelete)='quoteDeleted($event,i)'>
+              </app-quote-detail>
+            </div>
           </div>
         </div>
       </div>
